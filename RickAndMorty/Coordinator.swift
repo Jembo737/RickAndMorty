@@ -8,16 +8,15 @@
 import UIKit
 
 protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
-    var navigationController: UINavigationController { get }
-    
     func startCoordinator()
 }
 
 class MainCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
+    var navigationController: UINavigationController
     
-    var navigationController: UINavigationController = UINavigationController()
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
     
     func startCoordinator() {
         let initialViewController = ViewController()
