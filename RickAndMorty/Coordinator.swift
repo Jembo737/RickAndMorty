@@ -19,7 +19,7 @@ class MainCoordinator: Coordinator {
     }
     
     func startCoordinator() {
-        let initialViewController = ViewController()
+        let initialViewController = CharactersViewController()
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(initialViewController, animated: false)
     }

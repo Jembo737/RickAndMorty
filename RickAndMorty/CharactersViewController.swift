@@ -8,7 +8,7 @@
 import UIKit
 import ApiClient
 
-class ViewController: UIViewController {
+class CharactersViewController: UIViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     }
     
     var dataSource: DataSource!
+    var vm: CharactersViewModel = CharactersViewModel(api: ApiClient())
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
@@ -35,6 +36,9 @@ class ViewController: UIViewController {
         configureCollectionView()
         configureDataSource()
         configureSnapshot()
+        Task{
+            await testResult()
+        }
     }
     
     func configureDataSource() {
@@ -72,8 +76,19 @@ class ViewController: UIViewController {
         
         return layout
     }
+    
+    func testResult() async {
+        do {
+            try await vm.fetchCharacters()
+            // Handle successful fetch (optional)
+        } catch {
+            // Handle the error
+            print("Error fetching characters: \(error)")
+        }
+    }
+
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension CharactersViewController: UICollectionViewDelegate {
     
 }
