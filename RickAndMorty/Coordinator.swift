@@ -6,6 +6,22 @@
 //
 
 import UIKit
+import ApiClient
+
+class CharactersDIContainer {
+    func makeApiClient() -> ApiClient { 
+        ApiClient()
+    }
+    
+    func makeCharactersViewController() -> CharactersViewController {
+        let initialViewController = CharactersViewController(vm: makeCharactersViewModel())
+        return initialViewController
+    }
+    
+    func makeCharactersViewModel() -> CharactersViewModel {
+        return CharactersViewModel(api: makeApiClient())
+    }
+}
 
 protocol Coordinator {
     func startCoordinator()
@@ -13,13 +29,14 @@ protocol Coordinator {
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
+    let diContainer: CharactersDIContainer = .init()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func startCoordinator() {
-        let initialViewController = CharactersViewController()
+        let initialViewController = diContainer.makeCharactersViewController()
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(initialViewController, animated: false)
     }

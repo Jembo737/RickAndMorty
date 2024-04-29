@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ApiClient
 
 class CharactersViewController: UIViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
@@ -22,7 +21,16 @@ class CharactersViewController: UIViewController {
     }
     
     var dataSource: DataSource!
-    var vm: CharactersViewModel = CharactersViewModel(api: ApiClient())
+    var vm: CharactersViewModel
+    
+    init(vm: CharactersViewModel) {
+        self.vm = vm
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
