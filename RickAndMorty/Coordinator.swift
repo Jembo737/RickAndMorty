@@ -37,7 +37,6 @@ class MainCoordinator: Coordinator {
     
     func startCoordinator() {
         let initialViewController = diContainer.makeCharactersViewController()
-        navigationController.navigationBar.prefersLargeTitles = true
         navigationController.pushViewController(initialViewController, animated: false)
     }
     

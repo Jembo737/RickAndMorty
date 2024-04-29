@@ -11,21 +11,22 @@ import ApiClient
 class CharactersViewModel {
     let api: ApiClientProtocol
     
-    var characters = [Character]()
+    var characters = [CharacterItemViewModel]()
     
     init(api: ApiClientProtocol) {
         self.api = api
     }
     
-    func fetchCharacters() async throws {
+    func fetchCharacters() async {
         do {
             let response: CharacterResponse = try await api.fetchData()
-            characters = response.results
-            print(characters)
+//            characters.append(contentsOf: response.results.map(CharacterItemViewModel.init))
+            characters = response.results.map(CharacterItemViewModel.init)
+            print(response)
         } catch {
             print("Error fetching characters: \(error)")
             // Optionally propagate the error to the caller
-            throw error
+//            throw error
         }
     }
 }

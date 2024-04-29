@@ -43,7 +43,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell() {
+    private func configureCell() {
         contentView.addSubview(characterImage)
         contentView.addSubview(characterName)
         contentView.addSubview(characterStatus)
@@ -56,17 +56,24 @@ class CharactersCollectionViewCell: UICollectionViewCell {
             characterImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             characterImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             characterImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            characterImage.widthAnchor.constraint(equalTo: characterImage.heightAnchor, multiplier: 4/5),
+            characterImage.heightAnchor.constraint(equalToConstant: 150),
             
             characterName.topAnchor.constraint(equalTo: characterImage.bottomAnchor, constant: 10),
-            characterName.leadingAnchor.constraint(equalTo: characterImage.leadingAnchor),
-            characterName.trailingAnchor.constraint(equalTo: characterImage.trailingAnchor),
-            characterName.heightAnchor.constraint(equalToConstant: 30),
+            characterName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            characterName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//            characterName.heightAnchor.constraint(equalToConstant: 30),
             
             characterStatus.topAnchor.constraint(equalTo: characterName.bottomAnchor, constant: 10),
             characterStatus.leadingAnchor.constraint(equalTo: characterImage.leadingAnchor),
             characterStatus.trailingAnchor.constraint(equalTo: characterImage.trailingAnchor),
-            characterStatus.heightAnchor.constraint(equalToConstant: 30),
+//            characterStatus.heightAnchor.constraint(equalToConstant: 30),
+//            contentView.bottomAnchor.constraint(equalTo: characterStatus.bottomAnchor, constant: 16),
+            characterStatus.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
+    }
+    
+    func configure(with model: CharacterItemViewModel) {
+        self.characterName.text = model.name
+        self.characterStatus.text = model.status
     }
 }
