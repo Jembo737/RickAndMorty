@@ -14,14 +14,15 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     private var characterImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 7
         image.clipsToBounds = true
-        image.backgroundColor = .red
         return image
     }()
     
     private let characterName: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .white
         label.text = "Test"
         return label
     }()
@@ -29,6 +30,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     private let characterStatus: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .white
         label.alpha = 0.5
         label.text = "Status"
         return label

@@ -17,6 +17,7 @@ class CharactersViewController: UIViewController {
     
     var dataSource: DataSource!
     var vm: CharactersViewModel
+    var isLoading: Bool = false
     
     init(vm: CharactersViewModel) {
         self.vm = vm
@@ -29,13 +30,17 @@ class CharactersViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.backgroundColor = .clear
+        
         collectionView.register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: CharactersCollectionViewCell.cellReuseIdentifier)
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        view.backgroundColor = .black
+        
+        navigationController?.isNavigationBarHidden = true
         configureCollectionView()
         configureDataSource()
         Task {
@@ -103,5 +108,27 @@ class CharactersViewController: UIViewController {
 extension CharactersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if #available(iOS 13, *) {
+            (scrollView.subviews[(scrollView.subviews.count - 1)].subviews[0]).backgroundColor = UIColor.green
+        } else {
+            if let verticalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 1)] as? UIImageView) {
+                verticalIndicator.backgroundColor = UIColor.green
+            }
+        }
+        
+        if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
+            if !isLoading && vm.page < vm.totalPages {
+                isLoading = true
+                vm.page += 1
+                Task {
+                    await vm.fetchMoreCharacters()
+                    updateSnapshot(with: vm.characters)
+                    isLoading = false
+                }
+            }
+        }
     }
 }
