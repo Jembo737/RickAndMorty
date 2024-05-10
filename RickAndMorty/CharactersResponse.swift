@@ -5,23 +5,21 @@
 //  Created by Jemo on 24.04.24.
 //
 
-import Foundation
-
 // MARK: - Characters
- public struct CharacterResponse: Codable {
+ public struct CharacterResponse: Decodable {
     public let info: Info
     public let results: [Character]
 }
 
 // MARK: - Info
-public struct Info: Codable {
+public struct Info: Decodable {
     let count, pages: Int
     let next: String?
     let prev: String?
 }
 
 // MARK: - Result
-public struct Character: Codable {
+public struct Character: Decodable {
     let id: Int
     let name: String
     let status: Status
@@ -35,24 +33,24 @@ public struct Character: Codable {
     let created: String
 }
 
-enum Gender: String, Codable {
+enum Gender: String, Decodable {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct Location: Decodable {
     let name: String
     let url: String
 }
 
-enum Species: String, Codable {
+enum Species: String, Decodable {
     case alien = "Alien"
     case human = "Human"
 }
 
-enum Status: String, Codable {
+enum Status: String, Decodable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"

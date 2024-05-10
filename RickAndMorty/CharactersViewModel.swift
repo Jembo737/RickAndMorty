@@ -12,6 +12,7 @@ class CharactersViewModel {
     let api: ApiClientProtocol
     
     var characters = [CharacterItemViewModel]()
+    var page = 1
     
     init(api: ApiClientProtocol) {
         self.api = api
@@ -19,14 +20,32 @@ class CharactersViewModel {
     
     func fetchCharacters() async {
         do {
-            let response: CharacterResponse = try await api.fetchData()
-//            characters.append(contentsOf: response.results.map(CharacterItemViewModel.init))
+            let response: CharacterResponse = try await api.fetchData(with: api.basicURL())
+            //            characters.append(contentsOf: response.results.map(CharacterItemViewModel.init))
             characters = response.results.map(CharacterItemViewModel.init)
-            print(response)
         } catch {
             print("Error fetching characters: \(error)")
             // Optionally propagate the error to the caller
-//            throw error
+            //            throw error
+        }
+    }
+    
+    func fetchImage(index: IndexPath) async -> Data? {
+        do {
+            let result = try await api.fetchData(with: characters[index.row].image)
+            return result
+        } catch {
+            print("Did return error in fetching Image: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func fetchMoreCharacters() async {
+        do {
+            let response: CharacterResponse = try await api.fetchMoreData(for: page)
+            characters = response.results.map(CharacterItemViewModel.init)
+        } catch {
+            print("Error fetching additional characters: \(error)")
         }
     }
 }

@@ -48,7 +48,14 @@ class CharactersViewController: UIViewController {
     func configureDataSource() {
         dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, character in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharactersCollectionViewCell.cellReuseIdentifier, for: indexPath) as! CharactersCollectionViewCell
-            cell.configure(with: character)
+            Task {
+                let data = await self.vm.fetchImage(index: indexPath)
+                if let data = data, let image = UIImage(data: data) {
+                    cell.setImage(image: image)
+                    cell.configure(with: character)
+                }
+            }
+            
             return cell
         })
     }
@@ -63,7 +70,7 @@ class CharactersViewController: UIViewController {
     func configureCollectionView() {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+        collectionView.delegate = self
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -94,5 +101,7 @@ class CharactersViewController: UIViewController {
 }
 
 extension CharactersViewController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
 }

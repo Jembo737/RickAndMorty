@@ -76,4 +76,8 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         self.characterName.text = model.name
         self.characterStatus.text = model.status
     }
+    
+    func setImage(image: UIImage) {
+        characterImage.image = image
+    }
 }
