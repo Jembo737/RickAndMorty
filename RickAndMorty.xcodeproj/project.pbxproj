@@ -33,7 +33,6 @@
 
 /* Begin PBXFileReference section */
 		62BD5CC52BF2480300825D44 /* Network */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Network; path = ../../Swift/Network; sourceTree = "<group>"; };
-		62BD5CC62BF249FA00825D44 /* Network */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Network; sourceTree = "<group>"; };
 		CE9F02C62BD7A35E006F263D /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9F02C92BD7A35E006F263D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9F02CB2BD7A35E006F263D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		CE9F02BD2BD7A35E006F263D = {
 			isa = PBXGroup;
 			children = (
-				62BD5CC62BF249FA00825D44 /* Network */,
 				CE9F02C82BD7A35E006F263D /* RickAndMorty */,
 				CE9F02DF2BD7A360006F263D /* RickAndMortyTests */,
 				CE9F02C72BD7A35E006F263D /* Products */,
