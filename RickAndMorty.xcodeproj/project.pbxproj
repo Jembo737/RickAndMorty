@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62BD5CC92BF24C7500825D44 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = 62BD5CC82BF24C7500825D44 /* ApiClient */; };
 		CE9F02CA2BD7A35E006F263D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02C92BD7A35E006F263D /* AppDelegate.swift */; };
 		CE9F02CC2BD7A35E006F263D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02CB2BD7A35E006F263D /* SceneDelegate.swift */; };
 		CE9F02CE2BD7A35E006F263D /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02CD2BD7A35E006F263D /* CharactersViewController.swift */; };
@@ -15,11 +16,9 @@
 		CE9F02E12BD7A360006F263D /* RickAndMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02E02BD7A360006F263D /* RickAndMortyTests.swift */; };
 		CEB0372A2BD7A99F00E7C822 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB037292BD7A99F00E7C822 /* Coordinator.swift */; };
 		CEB484372BDFB78D00FEEA4F /* CharacterItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484362BDFB78100FEEA4F /* CharacterItemViewModel.swift */; };
-		CEDB03712BD7C089001E2EDA /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = CEDB03702BD7C089001E2EDA /* ApiClient */; };
 		CEDB03732BD7CF81001E2EDA /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB03722BD7CF81001E2EDA /* CharactersCollectionViewCell.swift */; };
 		CEDB03752BD90EF6001E2EDA /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB03742BD90EF6001E2EDA /* CharactersViewModel.swift */; };
 		CEDB03772BD92645001E2EDA /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB03762BD92645001E2EDA /* CharactersResponse.swift */; };
-		CEDB291A2BF2472600716322 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB29192BF2472600716322 /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62BD5CC72BF24B9A00825D44 /* ApiClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ApiClient; sourceTree = "<group>"; };
 		CE9F02C62BD7A35E006F263D /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9F02C92BD7A35E006F263D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9F02CB2BD7A35E006F263D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,12 +44,9 @@
 		CE9F02E02BD7A360006F263D /* RickAndMortyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyTests.swift; sourceTree = "<group>"; };
 		CEB037292BD7A99F00E7C822 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CEB484362BDFB78100FEEA4F /* CharacterItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemViewModel.swift; sourceTree = "<group>"; };
-		CEDB036D2BD7BF41001E2EDA /* ApiClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ApiClient; path = ../ApiClient; sourceTree = "<group>"; };
-		CEDB036E2BD7C025001E2EDA /* RMUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RMUI; path = ../RMUI; sourceTree = "<group>"; };
 		CEDB03722BD7CF81001E2EDA /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEDB03742BD90EF6001E2EDA /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		CEDB03762BD92645001E2EDA /* CharactersResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
-		CEDB29192BF2472600716322 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDB03712BD7C089001E2EDA /* ApiClient in Frameworks */,
+				62BD5CC92BF24C7500825D44 /* ApiClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,8 +71,7 @@
 		CE9F02BD2BD7A35E006F263D = {
 			isa = PBXGroup;
 			children = (
-				CEDB036E2BD7C025001E2EDA /* RMUI */,
-				CEDB036D2BD7BF41001E2EDA /* ApiClient */,
+				62BD5CC72BF24B9A00825D44 /* ApiClient */,
 				CE9F02C82BD7A35E006F263D /* RickAndMorty */,
 				CE9F02DF2BD7A360006F263D /* RickAndMortyTests */,
 				CE9F02C72BD7A35E006F263D /* Products */,
@@ -98,7 +94,6 @@
 				CEDB03762BD92645001E2EDA /* CharactersResponse.swift */,
 				CE9F02C92BD7A35E006F263D /* AppDelegate.swift */,
 				CE9F02CB2BD7A35E006F263D /* SceneDelegate.swift */,
-				CEDB29192BF2472600716322 /* ApiClient.swift */,
 				CE9F02CD2BD7A35E006F263D /* CharactersViewController.swift */,
 				CEB037292BD7A99F00E7C822 /* Coordinator.swift */,
 				CEDB03742BD90EF6001E2EDA /* CharactersViewModel.swift */,
@@ -151,7 +146,7 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
-				CEDB03702BD7C089001E2EDA /* ApiClient */,
+				62BD5CC82BF24C7500825D44 /* ApiClient */,
 			);
 			productName = RickAndMorty;
 			productReference = CE9F02C62BD7A35E006F263D /* RickAndMorty.app */;
@@ -239,7 +234,6 @@
 			files = (
 				CEDB03752BD90EF6001E2EDA /* CharactersViewModel.swift in Sources */,
 				CEB0372A2BD7A99F00E7C822 /* Coordinator.swift in Sources */,
-				CEDB291A2BF2472600716322 /* ApiClient.swift in Sources */,
 				CEDB03772BD92645001E2EDA /* CharactersResponse.swift in Sources */,
 				CE9F02CE2BD7A35E006F263D /* CharactersViewController.swift in Sources */,
 				CE9F02CA2BD7A35E006F263D /* AppDelegate.swift in Sources */,
@@ -533,7 +527,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CEDB03702BD7C089001E2EDA /* ApiClient */ = {
+		62BD5CC82BF24C7500825D44 /* ApiClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ApiClient;
 		};
