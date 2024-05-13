@@ -12,9 +12,9 @@ class CharactersViewModel {
     let api: ApiClientProtocol
     
     var characters = [CharacterItemViewModel]()
-    var totalPages = 0
-    var page = 1
-    var isLoading: Bool = false
+    private var totalPages = 0
+    private var page = 1
+    private var isLoading: Bool = false
 
     
     init(api: ApiClientProtocol) {
@@ -45,6 +45,7 @@ class CharactersViewModel {
     }
     
     func fetchMoreCharacters() async {
+        guard !isLoading && page < totalPages else { return }
         do {
             isLoading = true
             page += 1

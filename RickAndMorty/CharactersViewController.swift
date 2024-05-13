@@ -119,14 +119,9 @@ extension CharactersViewController: UICollectionViewDelegate {
         }
         
         if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
-            if !vm.isLoading && vm.page < vm.totalPages {
-                
                 Task {
                     await vm.fetchMoreCharacters()
                     updateSnapshot(with: vm.characters)
-                    isLoading = false
-                    
-                }
             }
         }
     }
