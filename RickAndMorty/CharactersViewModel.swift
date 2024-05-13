@@ -44,6 +44,7 @@ class CharactersViewModel {
         }
     }
     
+    #warning("Use `fetchCharacters()` method for fetching next page")
     func fetchMoreCharacters() async {
         guard !isLoading && page < totalPages else { return }
         do {

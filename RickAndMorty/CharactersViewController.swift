@@ -15,6 +15,7 @@ class CharactersViewController: UIViewController {
         case main
     }
     
+    #warning("make private every properties that shouldn't be accessible from outside")
     var dataSource: DataSource!
     var vm: CharactersViewModel
     
@@ -52,6 +53,9 @@ class CharactersViewController: UIViewController {
     func configureDataSource() {
         dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, character in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharactersCollectionViewCell.cellReuseIdentifier, for: indexPath) as! CharactersCollectionViewCell
+            
+#warning("Load image separately, set propertoes and fetch image inside cell")
+            
             Task {
                 let data = await self.vm.fetchImage(index: indexPath)
                 if let data = data, let image = UIImage(data: data) {
@@ -118,6 +122,7 @@ extension CharactersViewController: UICollectionViewDelegate {
             }
         }
         
+        #warning("View sends only action, vm decides which page to load and send isLoading")
         if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
                 Task {
                     await vm.fetchMoreCharacters()
