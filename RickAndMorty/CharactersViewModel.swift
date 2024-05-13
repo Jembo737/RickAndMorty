@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ApiClient
+//import ApiClient
 
 class CharactersViewModel {
     let api: ApiClientProtocol
