@@ -124,6 +124,8 @@ extension CharactersViewController: UICollectionViewDelegate {
                 Task {
                     await vm.fetchMoreCharacters()
                     updateSnapshot(with: vm.characters)
+                    isLoading = false
+                    
                 }
             }
         }
