@@ -19,6 +19,7 @@
 		CEDB03732BD7CF81001E2EDA /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB03722BD7CF81001E2EDA /* CharactersCollectionViewCell.swift */; };
 		CEDB03752BD90EF6001E2EDA /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB03742BD90EF6001E2EDA /* CharactersViewModel.swift */; };
 		CEDB03772BD92645001E2EDA /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB03762BD92645001E2EDA /* CharactersResponse.swift */; };
+		CEDB291A2BF2472600716322 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB29192BF2472600716322 /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		CEDB03722BD7CF81001E2EDA /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEDB03742BD90EF6001E2EDA /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		CEDB03762BD92645001E2EDA /* CharactersResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
+		CEDB29192BF2472600716322 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				CEDB03762BD92645001E2EDA /* CharactersResponse.swift */,
 				CE9F02C92BD7A35E006F263D /* AppDelegate.swift */,
 				CE9F02CB2BD7A35E006F263D /* SceneDelegate.swift */,
+				CEDB29192BF2472600716322 /* ApiClient.swift */,
 				CE9F02CD2BD7A35E006F263D /* CharactersViewController.swift */,
 				CEB037292BD7A99F00E7C822 /* Coordinator.swift */,
 				CEDB03742BD90EF6001E2EDA /* CharactersViewModel.swift */,
@@ -236,6 +239,7 @@
 			files = (
 				CEDB03752BD90EF6001E2EDA /* CharactersViewModel.swift in Sources */,
 				CEB0372A2BD7A99F00E7C822 /* Coordinator.swift in Sources */,
+				CEDB291A2BF2472600716322 /* ApiClient.swift in Sources */,
 				CEDB03772BD92645001E2EDA /* CharactersResponse.swift in Sources */,
 				CE9F02CE2BD7A35E006F263D /* CharactersViewController.swift in Sources */,
 				CE9F02CA2BD7A35E006F263D /* AppDelegate.swift in Sources */,
