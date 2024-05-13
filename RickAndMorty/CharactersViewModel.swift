@@ -14,6 +14,8 @@ class CharactersViewModel {
     var characters = [CharacterItemViewModel]()
     var totalPages = 0
     var page = 1
+    var isLoading: Bool = false
+
     
     init(api: ApiClientProtocol) {
         self.api = api
@@ -44,10 +46,15 @@ class CharactersViewModel {
     
     func fetchMoreCharacters() async {
         do {
+            isLoading = true
+            page += 1
+            
             let response: CharacterResponse = try await api.fetchMoreData(for: page)
             let newCharacters = response.results.map(CharacterItemViewModel.init)
             characters += newCharacters
             print("Succes")
+            isLoading = false
+
         } catch {
             print("Error fetching additional characters: \(error)")
         }

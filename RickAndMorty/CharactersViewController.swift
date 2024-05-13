@@ -17,7 +17,6 @@ class CharactersViewController: UIViewController {
     
     var dataSource: DataSource!
     var vm: CharactersViewModel
-    var isLoading: Bool = false
     
     init(vm: CharactersViewModel) {
         self.vm = vm
@@ -120,13 +119,11 @@ extension CharactersViewController: UICollectionViewDelegate {
         }
         
         if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
-            if !isLoading && vm.page < vm.totalPages {
-                isLoading = true
-                vm.page += 1
+            if !vm.isLoading && vm.page < vm.totalPages {
+                
                 Task {
                     await vm.fetchMoreCharacters()
                     updateSnapshot(with: vm.characters)
-                    isLoading = false
                 }
             }
         }
