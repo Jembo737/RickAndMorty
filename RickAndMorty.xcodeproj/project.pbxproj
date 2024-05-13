@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62BD5CC92BF24C7500825D44 /* ApiClient in Frameworks */ = {isa = PBXBuildFile; productRef = 62BD5CC82BF24C7500825D44 /* ApiClient */; };
 		CE9F02CA2BD7A35E006F263D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02C92BD7A35E006F263D /* AppDelegate.swift */; };
 		CE9F02CC2BD7A35E006F263D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02CB2BD7A35E006F263D /* SceneDelegate.swift */; };
 		CE9F02CE2BD7A35E006F263D /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F02CD2BD7A35E006F263D /* CharactersViewController.swift */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62BD5CC92BF24C7500825D44 /* ApiClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +146,7 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
+				62BD5CC82BF24C7500825D44 /* ApiClient */,
 			);
 			productName = RickAndMorty;
 			productReference = CE9F02C62BD7A35E006F263D /* RickAndMorty.app */;
@@ -522,6 +525,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62BD5CC82BF24C7500825D44 /* ApiClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ApiClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE9F02BE2BD7A35E006F263D /* Project object */;
 }
