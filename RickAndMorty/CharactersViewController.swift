@@ -15,9 +15,8 @@ class CharactersViewController: UIViewController {
         case main
     }
     
-    #warning("make private every properties that shouldn't be accessible from outside")
-    var dataSource: DataSource!
-    var vm: CharactersViewModel
+    private var dataSource: DataSource!
+    private var vm: CharactersViewModel
     
     init(vm: CharactersViewModel) {
         self.vm = vm
@@ -60,10 +59,10 @@ class CharactersViewController: UIViewController {
                 let data = await self.vm.fetchImage(index: indexPath)
                 if let data = data, let image = UIImage(data: data) {
                     cell.setImage(image: image)
-                    cell.configure(with: character)
                 }
             }
-            
+            cell.configure(with: character)
+
             return cell
         })
     }
@@ -113,6 +112,15 @@ extension CharactersViewController: UICollectionViewDelegate {
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CharactersCollectionViewCell {
+            let character = self.vm.characters[indexPath.row]
+            let vc = CharacterDetailsViewController(vm: character)
+            vc.characterImage.image = cell.takeImage()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if #available(iOS 13, *) {
             (scrollView.subviews[(scrollView.subviews.count - 1)].subviews[0]).backgroundColor = UIColor.green
@@ -122,7 +130,6 @@ extension CharactersViewController: UICollectionViewDelegate {
             }
         }
         
-        #warning("View sends only action, vm decides which page to load and send isLoading")
         if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
                 Task {
                     await vm.fetchMoreCharacters()

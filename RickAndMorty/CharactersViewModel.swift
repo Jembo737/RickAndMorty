@@ -24,7 +24,6 @@ class CharactersViewModel {
     func fetchCharacters() async {
         do {
             let response: CharacterResponse = try await api.fetchData(with: api.basicURL())
-            //            characters.append(contentsOf: response.results.map(CharacterItemViewModel.init))
             totalPages = response.info.pages
             characters = response.results.map(CharacterItemViewModel.init)
         } catch {
@@ -44,7 +43,6 @@ class CharactersViewModel {
         }
     }
     
-    #warning("Use `fetchCharacters()` method for fetching next page")
     func fetchMoreCharacters() async {
         guard !isLoading && page < totalPages else { return }
         do {

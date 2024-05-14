@@ -82,4 +82,8 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     func setImage(image: UIImage) {
         characterImage.image = image
     }
+    
+    func takeImage() -> UIImage? {
+        self.characterImage.image
+    }
 }
