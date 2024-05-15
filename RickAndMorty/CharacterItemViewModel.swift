@@ -12,7 +12,7 @@ struct CharacterItemViewModel: Hashable {
     let image: String
     let species: String
     let gender: String
-//    let origin: Location
+    let origin: Location
     
 //    init(id: Int, name: String, status: String, image: String) {
 //        self.id = id
@@ -28,7 +28,7 @@ struct CharacterItemViewModel: Hashable {
         self.image = model.image
         self.species = model.species
         self.gender = model.gender
-//        self.origin = model.origin
+        self.origin = model.origin
     }
 }
 

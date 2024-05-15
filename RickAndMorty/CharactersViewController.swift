@@ -37,16 +37,23 @@ class CharactersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        
-        navigationController?.isNavigationBarHidden = true
         configureCollectionView()
         configureDataSource()
         Task {
             await vm.fetchCharacters()
             updateSnapshot(with: vm.characters)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureView()
+    }
+    
+    func configureView() {
+        view.backgroundColor = .black
         
+        navigationController?.isNavigationBarHidden = true
     }
     
     func configureDataSource() {
@@ -76,8 +83,10 @@ class CharactersViewController: UIViewController {
     
     func configureCollectionView() {
         view.addSubview(collectionView)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

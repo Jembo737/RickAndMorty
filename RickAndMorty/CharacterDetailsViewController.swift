@@ -22,21 +22,11 @@ class CharacterDetailsViewController: UIViewController {
     
     lazy var characterImage: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         
         return image
-    }()
-    
-    private lazy var characterName: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 30)
-        label.text = "Name: "
-        label.textColor = .white
-        
-        return label
     }()
     
     private lazy var characterStatus: UILabel = {
@@ -82,8 +72,7 @@ class CharacterDetailsViewController: UIViewController {
     private lazy var mainStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.alignment = .fill
-        stack.spacing = 10
+//        stack.spacing = 3
         
         return stack
     }()
@@ -98,10 +87,15 @@ class CharacterDetailsViewController: UIViewController {
     func configView() {
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mainStack)
+        view.backgroundColor = .black
         
+        let titleAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25), NSAttributedString.Key.foregroundColor: UIColor.green]
+        navigationController?.navigationBar.standardAppearance.titleTextAttributes = titleAttribute
+        navigationController?.navigationBar.tintColor = .green
         navigationController?.isNavigationBarHidden = false
         
-        let views = [characterImage, characterName, characterStatus, characterGender, characterSpecies, characterOrigin]
+        
+        let views = [characterImage, characterStatus, characterGender, characterSpecies, characterOrigin]
         views.forEach({ mainStack.addArrangedSubview($0)})
         
         let safeView = view.safeAreaLayoutGuide
@@ -109,14 +103,16 @@ class CharacterDetailsViewController: UIViewController {
             mainStack.topAnchor.constraint(equalTo: safeView.topAnchor),
             mainStack.leadingAnchor.constraint(equalTo: safeView.leadingAnchor),
             mainStack.trailingAnchor.constraint(equalTo: safeView.trailingAnchor),
-            mainStack.bottomAnchor.constraint(equalTo: safeView.bottomAnchor)
+            mainStack.bottomAnchor.constraint(equalTo: safeView.bottomAnchor, constant: -100)
         ])
     }
     
     func configProperties() {
-        self.characterName.text! += self.vm.name
+        title = self.vm.name
+        
         self.characterGender.text! += self.vm.gender
         self.characterStatus.text! += self.vm.status
         self.characterSpecies.text! += self.vm.species
+        self.characterOrigin.text! += self.vm.origin.name
     }
 }

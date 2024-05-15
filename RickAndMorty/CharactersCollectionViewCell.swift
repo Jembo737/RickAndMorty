@@ -14,8 +14,11 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     private var characterImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 7
+        image.layer.cornerRadius = 20
+        image.layer.borderWidth = 2
+        image.layer.borderColor = UIColor.green.cgColor
         image.clipsToBounds = true
+        
         return image
     }()
     
@@ -24,6 +27,8 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = .white
         label.text = "Test"
+        label.textColor = .green
+        
         return label
     }()
     
@@ -33,12 +38,19 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         label.textColor = .white
         label.alpha = 0.5
         label.text = "Status"
+        label.textColor = .green
+        
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        characterStatus.textColor = .green
     }
     
     required init?(coder: NSCoder) {
@@ -63,13 +75,10 @@ class CharactersCollectionViewCell: UICollectionViewCell {
             characterName.topAnchor.constraint(equalTo: characterImage.bottomAnchor, constant: 10),
             characterName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             characterName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            characterName.heightAnchor.constraint(equalToConstant: 30),
             
             characterStatus.topAnchor.constraint(equalTo: characterName.bottomAnchor, constant: 10),
             characterStatus.leadingAnchor.constraint(equalTo: characterImage.leadingAnchor),
             characterStatus.trailingAnchor.constraint(equalTo: characterImage.trailingAnchor),
-//            characterStatus.heightAnchor.constraint(equalToConstant: 30),
-//            contentView.bottomAnchor.constraint(equalTo: characterStatus.bottomAnchor, constant: 16),
             characterStatus.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
     }
@@ -77,6 +86,12 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     func configure(with model: CharacterItemViewModel) {
         self.characterName.text = model.name
         self.characterStatus.text = model.status
+        
+        if characterStatus.text == Status.dead.rawValue {
+            characterStatus.textColor = .red
+        } else if characterStatus.text == Status.unknown.rawValue {
+            characterStatus.textColor = .gray
+        }
     }
     
     func setImage(image: UIImage) {

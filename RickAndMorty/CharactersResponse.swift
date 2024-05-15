@@ -5,6 +5,8 @@
 //  Created by Jemo on 24.04.24.
 //
 
+import Foundation
+
 // MARK: - Characters
  public struct CharacterResponse: Decodable {
     public let info: Info
@@ -40,7 +42,8 @@ enum Gender: String, Decodable {
 }
 
 // MARK: - Location
-struct Location: Decodable {
+struct Location: Decodable, Hashable {
+    let id = UUID()
     let name: String
     let url: String
 }
@@ -57,5 +60,13 @@ enum Status: String, Decodable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
-}
+    
+//    var color: UIColor {
+//        switch self {
+//        case .alive: return UIColor.systemGreen
+//        case .dead: return UIColor.systemRed
+//        case .unknown: return UIColor.systemGray
+//        }
+    }
+
 
